@@ -19,7 +19,7 @@
                 arrows: true,
                 bounds: {
                   min: new Date(today.getFullYear(), 0, 1),
-                  max: new Date(today.getFullYear(), today.getMonth(), today.getDate())
+                  max: new Date(today.getFullYear(), 11, 31)
                 },
                 defaultValues: start,
                 step: {

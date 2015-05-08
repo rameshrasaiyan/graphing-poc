@@ -11,8 +11,8 @@
         copyRows(data.values.min.getMonth(), data.values.max.getMonth());
       });
       var sourceRows = [];
-      var monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
+      var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'];
       for (var i = 0; i < 12; i++) {
         sourceRows.push({
           c: [
@@ -41,58 +41,58 @@
         }
       }
       $scope.chartObject = {
-        "type": "AreaChart",
-        "displayed": true,
-        "data": {
-          "cols": [
+        'type': 'AreaChart',
+        'displayed': true,
+        'data': {
+          'cols': [
             {
-              "id": "month",
-              "label": "Month",
-              "type": "string",
-              "p": {}
+              'id': 'month',
+              'label': 'Month',
+              'type': 'string',
+              'p': {}
             },
             {
-              "id": "laptop-id",
-              "label": "Laptop",
-              "type": "number",
-              "p": {}
+              'id': 'laptop-id',
+              'label': 'Laptop',
+              'type': 'number',
+              'p': {}
             },
             {
-              "id": "desktop-id",
-              "label": "Desktop",
-              "type": "number",
-              "p": {}
+              'id': 'desktop-id',
+              'label': 'Desktop',
+              'type': 'number',
+              'p': {}
             },
             {
-              "id": "server-id",
-              "label": "Server",
-              "type": "number",
-              "p": {}
+              'id': 'server-id',
+              'label': 'Server',
+              'type': 'number',
+              'p': {}
             },
             {
-              "id": "cost-id",
-              "label": "Shipping",
-              "type": "number"
+              'id': 'cost-id',
+              'label': 'Shipping',
+              'type': 'number'
             }
           ],
-          "rows": []
+          'rows': []
         },
-        "options": {
-          "title": "Sales per month",
-          "isStacked": "true",
-          "fill": 20,
-          "displayExactValues": true,
-          "vAxis": {
-            "title": "Sales unit",
-            "gridlines": {
-              "count": 10
+        'options': {
+          'title': 'Sales per month',
+          'isStacked': 'true',
+          'fill': 20,
+          'displayExactValues': true,
+          'vAxis': {
+            'title': 'Sales unit',
+            'gridlines': {
+              'count': 10
             }
           },
-          "hAxis": {
-            "title": "Date"
+          'hAxis': {
+            'title': 'Date'
           }
         },
-        "formatters": {}
+        'formatters': {}
       };
     });
 }());
