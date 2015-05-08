@@ -1,16 +1,17 @@
-
-angular.module('graphingPoc', [
-  'ngRoute',
-  'graphingPoc.todo'
-])
-.config(function ($routeProvider) {
+(function () {
   'use strict';
-  $routeProvider
-    .when('/todo', {
-      controller: 'TodoCtrl',
-      templateUrl: '/graphing-poc/todo/todo.html'
-    })
-    .otherwise({
-      redirectTo: '/todo'
+  angular.module('graphingPoc', [
+    'ngRoute',
+    'graphingPoc.graphing'
+  ])
+    .config(function ($routeProvider) {
+      $routeProvider
+        .when('/graphing', {
+          controller: 'GraphingCtrl',
+          templateUrl: '/graphing/graphing.html'
+        })
+        .otherwise({
+          redirectTo: '/graphing'
+        });
     });
-});
+}());
