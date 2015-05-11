@@ -4,24 +4,37 @@
     .module('graphingPoc.graphing')
     .directive('dateRangeSlider', function () {
       return {
+        scope: {
+          startDate: '=',
+          endDate: '='
+        },
         templateUrl: '/graphing/date-range-slider.html',
         controller: function ($scope, $element) {
           function templateLoaded() {
-            var today = new Date();
-            today.setDate(today.getDate() - 1);
-            var start = {
-              min: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 6),
-              max: new Date(today.getFullYear(), today.getMonth(), today.getDate())
+            var start = typeof $scope.startDate !== 'object' ? new Date($scope.startDate) : $scope.startDate,
+              end = typeof $scope.endDate !== 'object' ? new Date($scope.endDate) : $scope.endDate,
+              yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            // Fix for ambiguous datetime parsing
+            if ($scope.startDate !== 'object') {
+              start.setDate(start.getDate() + 1);
+            }
+            if ($scope.endDate !== 'object') {
+              end.setDate(end.getDate() + 1);
+            }
+            var defaultVals = {
+              min: new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate() - 6),
+              max: new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate())
             };
-            $scope.$emit('date-change', { values: start });
+            $scope.$emit('date-change', { values: defaultVals });
             $($element)
               .dateRangeSlider({
                 arrows: true,
                 bounds: {
-                  min: new Date(today.getFullYear(), 0, 1),
-                  max: new Date(today.getFullYear(), 11, 31)
+                  min: start,
+                  max: end
                 },
-                defaultValues: start,
+                defaultValues: defaultVals,
                 step: {
                   days: 1
                 }
@@ -34,9 +47,6 @@
               });
           }
           templateLoaded();
-        },
-        link: function (scope, elem) {
-
         }
       };
     });
