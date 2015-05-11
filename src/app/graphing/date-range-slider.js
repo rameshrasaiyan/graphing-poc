@@ -13,8 +13,8 @@
           function templateLoaded() {
             var start = typeof $scope.startDate !== 'object' ? new Date($scope.startDate) : $scope.startDate,
               end = typeof $scope.endDate !== 'object' ? new Date($scope.endDate) : $scope.endDate,
-              yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1);
+              today = new Date();
+            //today.setDate(today.getDate() - 1);
             // Fix for ambiguous datetime parsing
             if ($scope.startDate !== 'object') {
               start.setDate(start.getDate() + 1);
@@ -23,8 +23,8 @@
               end.setDate(end.getDate() + 1);
             }
             var defaultVals = {
-              min: new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate() - 6),
-              max: new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate())
+              min: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 6),
+              max: new Date(today.getFullYear(), today.getMonth(), today.getDate())
             };
             $scope.$emit('date-change', { values: defaultVals });
             $($element)
